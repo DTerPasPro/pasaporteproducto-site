@@ -1,8 +1,7 @@
-import { defineConfig } from 'astro/config';
-import github from '@astrojs/github';
+import { defineConfig } from "astro/config";
 
 export default defineConfig({
-  base: '/pasaporteproducto-site/',
-  output: 'static',
-  adapter: github(),
+  base: "/pasaporteproducto-site/",
+  outDir: "./dist",
+  output: "static"
 });

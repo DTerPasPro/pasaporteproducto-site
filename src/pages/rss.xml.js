@@ -1,16 +1,8 @@
 import rss from '@astrojs/rss';
-import { getCollection } from 'astro:content';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 
-export async function GET(context) {
-	const posts = await getCollection('blog');
-	return rss({
-		title: SITE_TITLE,
-		description: SITE_DESCRIPTION,
-		site: context.site,
-		items: posts.map((post) => ({
-			...post.data,
-			link: `/blog/${post.id}/`,
-		})),
-	});
-}
+export const get = () => rss({
+  title: "Pasaporte Digital de Producto",
+  description: "Noticias seleccionadas sobre el Pasaporte Digital de Producto",
+  site: "https://pasaporteproducto.es",
+  items: [] // Aquí deberías generar las noticias, por ahora puedes dejarlo vacío
+});
