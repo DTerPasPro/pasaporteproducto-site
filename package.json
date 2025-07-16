@@ -1,0 +1,22 @@
+{
+  "name": "pasaporte-digital-producto",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^4.3.0",
+    "@astrojs/sitemap": "^3.4.1",
+    "astro": "^5.11.1",
+    "cheerio": "^1.1.0",
+    "google-translate-api-x": "^10.7.2",
+    "node-fetch": "^3.3.2",
+    "rss-parser": "^3.13.0"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.2"
+  }
+}
