@@ -32,4 +32,4 @@ jobs:
           commit_user_email: actions@github.com
           branch: main       # o la rama que publiques
 
-chore: add auto-update workflow
+
