@@ -2,6 +2,8 @@ name: Actualizar news.json
 
 on:
   workflow_dispatch:
+  schedule:
+    - cron: '0 */6 * * *'  # Cada 6 horas
 
 jobs:
   update-news:
@@ -17,7 +19,7 @@ jobs:
           node-version: 20
 
       - name: Instalar dependencias
-        run: npm install
+        run: npm ci
 
       - name: Generar news.json
         run: node fetch-news.cjs
