@@ -3,10 +3,10 @@ name: test-schedule
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 */6 * * *'
+    - cron: '*/15 * * * *'   # cada 15 min para probar
 
 jobs:
   noop:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "funciona"
+      - run: echo OK
