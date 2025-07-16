@@ -1,22 +1,20 @@
 name: Actualizar news.json
 
 on:
-  schedule:
-    - cron: '0 6 * * *'     # ⏰ cada día a las 06:00 UTC (07:00 península)
-  workflow_dispatch:        # ▶️ botón “Run workflow” manual
+  workflow_dispatch:
 
 jobs:
-  build:
+  update-news:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repo
+      - name: Clonar el repositorio
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
+      - name: Usar Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20   # o la versión que uses
+          node-version: 20
 
       - name: Instalar dependencias
         run: npm ci
@@ -30,6 +28,4 @@ jobs:
           commit_message: 'build: actualizar news.json'
           commit_user_name: GitHub Action
           commit_user_email: actions@github.com
-          branch: main       # o la rama que publiques
-
-
+          branch: main
