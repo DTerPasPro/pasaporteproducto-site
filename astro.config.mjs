@@ -1,10 +1,10 @@
 import { defineConfig } from 'astro/config';
-import sitemap from '@astrojs/sitemap';
-import github from '@astrojs/github';
+import staticAdapter from '@astrojs/adapter-static';
 
 export default defineConfig({
-  site: 'https://dterpaspro.github.io/pasaporteproducto-site/',
-  base: '/pasaporteproducto-site/',
-  output: 'static',
-  integrations: [sitemap(), github()],
+  site: 'https://pasaporteproducto.es',
+  adapter: staticAdapter(),
+  build: {
+    format: 'directory',
+  }
 });
