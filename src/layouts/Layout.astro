@@ -3,6 +3,7 @@ import { SITE_TITLE } from '../consts';
 import { Astro } from 'astro';
 
 const { title = SITE_TITLE } = Astro.props;
+const base = Astro.site?.pathname || '/';
 ---
 
 <html lang="es">
@@ -10,33 +11,22 @@ const { title = SITE_TITLE } = Astro.props;
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
-
-    <!-- ✅ Favicon -->
-   <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-
-    <!-- ✅ Estilos -->
-    <link rel="stylesheet" href="/pasaporteproducto-site/styles/global.css" />
+    <link rel="icon" href={`${base}favicon.ico`} type="image/x-icon" />
+    <link rel="stylesheet" href={`${base}styles/global.css`} />
   </head>
-
   <body>
     <div style="display: flex; min-height: 100vh;">
       <aside class="sidebar">
-        <!-- ✅ LOGO correcto -->
         <div style="padding: 1rem; text-align: center;">
-          <a href="/pasaporteproducto-site/">
-            <img
-              src="/pasaporteproducto-site/logo-pdp.png"
-              alt="Pasaporte Digital de Producto"
-              style="max-width: 220px; margin: 0 auto; display: block;"
-            />
+          <a href={base}>
+            <img src={`${base}logo-pdp.png`} alt="Pasaporte Digital de Producto" style="max-width: 220px; margin: 0 auto; display: block;" />
           </a>
         </div>
 
-        <!-- ✅ Navegación con rutas absolutas en producción -->
-        <a href="/pasaporteproducto-site/noticias" class={Astro.url.pathname === '/noticias' ? 'active' : ''}>Noticias</a>
-        <a href="/pasaporteproducto-site/recursos" class={Astro.url.pathname === '/recursos' ? 'active' : ''}>Recursos</a>
-        <a href="/pasaporteproducto-site/glosario" class={Astro.url.pathname === '/glosario' ? 'active' : ''}>Glosario</a>
-        <a href="/pasaporteproducto-site/guia" class={Astro.url.pathname === '/guia' ? 'active' : ''}>Guía gratuita</a>
+        <a href={`${base}noticias`} class={Astro.url.pathname === '/noticias' ? 'active' : ''}>Noticias</a>
+        <a href={`${base}recursos`} class={Astro.url.pathname === '/recursos' ? 'active' : ''}>Recursos</a>
+        <a href={`${base}glosario`} class={Astro.url.pathname === '/glosario' ? 'active' : ''}>Glosario</a>
+        <a href={`${base}guia`} class={Astro.url.pathname === '/guia' ? 'active' : ''}>Guía gratuita</a>
       </aside>
 
       <main class="main-content">
