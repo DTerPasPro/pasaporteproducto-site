@@ -17,7 +17,7 @@ jobs:
           node-version: 20
 
       - name: Instalar dependencias
-        run: npm ci
+        run: npm install
 
       - name: Generar news.json
         run: node fetch-news.cjs
