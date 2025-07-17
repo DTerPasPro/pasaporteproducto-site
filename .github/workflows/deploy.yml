@@ -3,33 +3,54 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main  # Asegúrate de que esta sea tu rama principal
+      - main
+    paths:
+      - 'news.json'
+      - 'src/**'
+      - 'public/**'
+      - 'astro.config.mjs'
+  workflow_dispatch:
 
 permissions:
-  contents: write  # Para permitir a Actions hacer push al repo
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repo
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Install Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
-      - name: Build site
+      - name: Build with Astro
         run: npm run build
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
         with:
-          personal_token: ${{ secrets.GH_TOKEN }}
-          external_repository: DTerPasPro/pasaporteproducto-site
-          publish_dir: ./dist
-          publish_branch: gh-pages
+          path: ./dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
