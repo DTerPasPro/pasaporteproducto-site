@@ -5,6 +5,10 @@ on:
   schedule:
     - cron: '0 */6 * * *'   # cada 6 h: 00:00, 06:00, 12:00, 18:00 UTC
 
+permissions:
+  contents: write
+  actions: write
+
 jobs:
   update-news:
     runs-on: ubuntu-latest
@@ -32,3 +36,7 @@ jobs:
           commit_user_email: actions@github.com
           branch: main
 
+      - name: Disparar despliegue manualmente
+        uses: peter-evans/workflow-dispatch@v1
+        with:
+          workflow: deploy.yml
