@@ -1,0 +1,27 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const glosario = [
+  { termino: "DPP", definicion: "Pasaporte Digital de Producto. Un documento digital que contiene información obligatoria sobre un producto, su sostenibilidad, reciclabilidad y trazabilidad." },
+  { termino: "ESPR", definicion: "Reglamento de Ecodiseño para Productos Sostenibles. Marco legal de la Unión Europea que establece requisitos para que los productos sean más sostenibles y circulares." },
+  { termino: "GS1", definicion: "Organización global que desarrolla estándares para la identificación de productos, como los códigos de barras, utilizados también en el DPP." },
+  { termino: "GINETEX", definicion: "Organismo que regula el etiquetado textil a nivel internacional. Su sistema puede integrarse en pasaportes digitales del sector textil." },
+  { termino: "QR Code", definicion: "Código de respuesta rápida que puede redirigir a la ficha digital del DPP, donde se aloja la información del producto." },
+  { termino: "Identificador Único", definicion: "Código individual que se asigna a cada producto y lo enlaza con su pasaporte digital correspondiente." }
+];
+---
+
+<Layout title="Glosario – Pasaporte Digital de Producto">
+  <h1>Glosario</h1>
+  <p>Consulta las definiciones clave para comprender la normativa y los términos más habituales del ecosistema DPP.</p>
+
+  <ul>
+    {glosario.map(({ termino, definicion }) => (
+      <li style="margin-bottom: 1.5rem;">
+        <strong>{termino}</strong><br />
+        <span class="summary">{definicion}</span>
+      </li>
+    ))}
+  </ul>
+</Layout>
+

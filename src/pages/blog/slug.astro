@@ -1,0 +1,13 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+// Props que esperas pasar desde una futura integración o colección
+const { title = "Título del artículo", date = "2025-01-01", content = "" } = Astro.props;
+---
+
+<Layout title={`${title} – Blog DPP`}>
+  <h1>{title}</h1>
+  <p class="meta">{new Date(date).toLocaleDateString('es-ES')}</p>
+
+  <div class="summary" innerHTML={content}></div>
+</Layout>

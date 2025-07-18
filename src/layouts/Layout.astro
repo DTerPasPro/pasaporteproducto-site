@@ -1,37 +1,112 @@
 ---
-import { SITE_TITLE } from '../consts';
-import { Astro } from 'astro';
-
-const { title = SITE_TITLE } = Astro.props;
-const base = Astro.site?.pathname || '/';
+const { title = "Pasaporte Digital de Producto" } = Astro.props;
 ---
 
 <html lang="es">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
-    <link rel="icon" href={`${base}favicon.ico`} type="image/x-icon" />
-    <link rel="stylesheet" href={`${base}styles/global.css`} />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/global.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+    <style>
+      header {
+        background: white;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        padding: 0.75rem 1.5rem;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      }
+
+      .header-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        max-width: 960px;
+        margin: auto;
+      }
+
+      .header-logo img {
+        height: 130px;
+      }
+
+      nav.navbar {
+        display: flex;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+      }
+
+      nav.navbar a {
+        text-decoration: none;
+        color: #333;
+        font-weight: bold;
+        font-size: 0.95rem;
+        border-bottom: 2px solid transparent;
+      }
+
+      nav.navbar a:hover {
+        border-bottom: 2px solid #333;
+      }
+
+      main {
+        max-width: 800px;
+        margin: auto;
+        padding: 2rem 1rem;
+      }
+
+      footer {
+        text-align: center;
+        font-size: 0.8rem;
+        color: #999;
+        padding: 2rem 1rem;
+      }
+
+      @media (max-width: 600px) {
+        .header-container {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .header-logo img {
+          height: 90px;
+        }
+
+        nav.navbar {
+          justify-content: center;
+          gap: 1rem;
+          padding-top: 0.5rem;
+        }
+      }
+    </style>
   </head>
+
   <body>
-    <div style="display: flex; min-height: 100vh;">
-      <aside class="sidebar">
-        <div style="padding: 1rem; text-align: center;">
-          <a href={base}>
-            <img src={`${base}logo-pdp.png`} alt="Pasaporte Digital de Producto" style="max-width: 220px; margin: 0 auto; display: block;" />
-          </a>
+    <header>
+      <div class="header-container">
+        <div class="header-logo">
+          <img src="/logo-pdp.png" alt="Logo Pasaporte Digital de Producto" />
         </div>
+        <nav class="navbar">
+          <a href="/">Home</a>
+          <a href="/noticias">Noticias</a>
+          <a href="/blog">Blog</a>
+          <a href="/calculadora">Calculadora</a>
+          <a href="/glosario">Glosario</a>
+        </nav>
+      </div>
+    </header>
 
-        <a href={`${base}noticias`} class={Astro.url.pathname === '/noticias' ? 'active' : ''}>Noticias</a>
-        <a href={`${base}recursos`} class={Astro.url.pathname === '/recursos' ? 'active' : ''}>Recursos</a>
-        <a href={`${base}glosario`} class={Astro.url.pathname === '/glosario' ? 'active' : ''}>Glosario</a>
-        <a href={`${base}guia`} class={Astro.url.pathname === '/guia' ? 'active' : ''}>Guía gratuita</a>
-      </aside>
+    <main>
+      <slot />
+    </main>
 
-      <main class="main-content">
-        <slot />
-      </main>
-    </div>
+    <footer>
+      © {new Date().getFullYear()} PasaporteProducto.es · Sitio informativo sobre el Pasaporte Digital de Producto
+    </footer>
   </body>
 </html>
+

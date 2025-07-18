@@ -67,11 +67,11 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.2;
   text-align: left;
 }
-h1 { font-size: 3.052em; }
-h2 { font-size: 2.441em; }
-h3 { font-size: 1.953em; }
-h4 { font-size: 1.563em; }
-h5 { font-size: 1.25em; }
+h1 { font-size: 2.2em; }
+h2 { font-size: 1.9em; }
+h3 { font-size: 1.5em; }
+h4 { font-size: 1.25em; }
+h5 { font-size: 1.0em; }
 
 /* Enlaces */
 a {
@@ -192,3 +192,61 @@ hr {
   .news-list { grid-template-columns: 1fr; }
 }
 
+/* === Tarjetas uniformes (Home, Blog, Noticias) === */
+.card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  transition: background 0.2s ease;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+}
+.card:hover {
+  background: #f9f9f9;
+}
+.card-title {
+  font-size: 1.25rem;
+  margin: 0 0 0.5rem 0;
+  color: #000;
+  text-decoration: none;
+}
+.card-title:hover {
+  text-decoration: underline;
+}
+.meta {
+  font-size: 0.85rem;
+  color: #777;
+  margin-bottom: 0.5rem;
+}
+.tag {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #000;
+  background: #e0e0e0;
+  border-radius: 4px;
+  padding: 0.15rem 0.5rem;
+  display: inline-block;
+  margin-right: 0.5rem;
+}
+.summary {
+  font-size: 0.95rem;
+  line-height: 1.4;
+  margin-top: 0.5rem;
+}
+
+@media (max-width: 600px) {
+  .card {
+    padding: 1rem;
+  }
+  .card-title {
+    font-size: 1.1rem;
+  }
+  .summary {
+    font-size: 0.9rem;
+  }
+}
+
+/* === Header compacto (menos espacio arriba) === */
+header {
+  padding-top: 1rem !important;
+}
